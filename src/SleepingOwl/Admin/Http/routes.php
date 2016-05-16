@@ -10,15 +10,15 @@ Route::post('login', [
 	'uses' => 'AuthController@postLogin',
 ]);
 
-Route::get('assets/lang', [
-	'as'   => 'admin.lang',
-	'uses' => 'AdminController@getLang',
-]);
-
 Route::group([
 	'middleware' => config('admin.middleware'),
 ], function ()
 {
+	Route::get('assets/lang', [
+		'as'   => 'admin.lang',
+		'uses' => 'AdminController@getLang',
+	]);
+	
 	Route::get('logout', [
 		'as'   => 'admin.logout',
 		'uses' => 'AuthController@getLogout',
